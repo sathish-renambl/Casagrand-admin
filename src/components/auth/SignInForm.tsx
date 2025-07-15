@@ -27,35 +27,36 @@ export default function SignInForm() {
     e.preventDefault()
 
     console.log(email)
-    try{
-      console.log('hello')
-      const response = await fetch(`${URL}admin/login`,{
-      method:"POST",
-      headers:{
-        'Content-Type': 'application/json',
-      },
-      body:JSON.stringify({email:email,password:password})
-    })
-     if(response.status === 200){
-      const data = await response.json()
-      console.log(data)
-      localStorage.setItem("token",data.access_token)
-      localStorage.setItem("roleType",data.roleType)
-      localStorage.setItem("roleId",data.roleId)
-      localStorage.setItem("name",data.full_name)
-      localStorage.setItem("email",email)
-      saveToLocalStorage('roleType',data.roleType)
-      saveToLocalStorage('accessRoles',data.accessRoles)
-      navigation('/home')
+    navigation('/home')
+    // try{
+    //   console.log('hello')
+    //   const response = await fetch(`${URL}admin/login`,{
+    //   method:"POST",
+    //   headers:{
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body:JSON.stringify({email:email,password:password})
+    // })
+    //  if(response.status === 200){
+    //   const data = await response.json()
+    //   console.log(data)
+    //   localStorage.setItem("token",data.access_token)
+    //   localStorage.setItem("roleType",data.roleType)
+    //   localStorage.setItem("roleId",data.roleId)
+    //   localStorage.setItem("name",data.full_name)
+    //   localStorage.setItem("email",email)
+    //   saveToLocalStorage('roleType',data.roleType)
+    //   saveToLocalStorage('accessRoles',data.accessRoles)
+    //   navigation('/home')
       
-    }else{
-      // setIsChecked(true)
-      console.log('invalid credentials')
-      toast.error("Invalid Credentials")
-    }
-    }catch(e){
-      console.log(e)
-    }
+    // }else{
+    //   // setIsChecked(true)
+    //   console.log('invalid credentials')
+    //   toast.error("Invalid Credentials")
+    // }
+    // }catch(e){
+    //   console.log(e)
+    // }
     
     
   }
